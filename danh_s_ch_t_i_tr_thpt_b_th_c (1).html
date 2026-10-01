@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Tài Trợ - Kỷ Niệm 60 Năm THPT Bá Thước</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vintage: {
+                            50: '#fdfbf7',
+                            100: '#f9f5ec',
+                            200: '#f0e6d2',
+                            300: '#e4d1b2',
+                            800: '#5c4033',
+                            900: '#3d2817',
+                        },
+                        school: {
+                            gold: '#d97706',
+                            amber: '#b45309',
+                            cream: '#fffbeb',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3eb;
+            background-image: radial-gradient(#e4d1b2 0.75px, transparent 0.75px), radial-gradient(#e4d1b2 0.75px, #f7f3eb 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .vintage-shadow {
+            box-shadow: 0 10px 25px -5px rgba(92, 64, 51, 0.1), 0 8px 10px -6px rgba(92, 64, 51, 0.1);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0e6d2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b45309;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #92400e;
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col text-vintage-900">
+
+    <header class="bg-gradient-to-r from-vintage-900 via-vintage-800 to-vintage-900 text-vintage-50 py-8 px-4 shadow-xl relative overflow-hidden border-b-4 border-school-gold">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4 text-center md:text-left">
+                <div class="w-20 h-20 bg-school-gold/20 rounded-full border-2 border-school-gold flex items-center justify-center shrink-0 shadow-inner">
+                    <span class="font-serif font-bold text-3xl text-school-gold">60</span>
+                </div>
+                <div>
+                    <div class="inline-block bg-school-gold/30 text-school-gold text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest mb-1 border border-school-gold/40">
+                        Năm Thành Lập Trường
+                    </div>
+                    <h1 class="font-serif text-2xl md:text-4xl font-extrabold tracking-wide text-vintage-100">
+                        TRƯỜNG THPT BÁ THƯỚC
+                    </h1>
+                    <p class="text-vintage-200 text-sm md:text-base mt-1 font-light">
+                        Danh Sách Tri ân Nhà Tài Trợ - Kỷ Niệm 60 Năm Thành Lập
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button onclick="openModal()" class="bg-school-gold hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition duration-300 flex items-center gap-2 transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-hand-holding-dollar"></i> Đăng Ký Tài Trợ
+                </button>
+                <a href="#stats-section" class="bg-vintage-800/80 hover:bg-vintage-800 border border-vintage-300/30 text-vintage-100 font-medium px-5 py-3 rounded-xl backdrop-blur transition duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie"></i> Thống Kê
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+        
+        <div id="stats-section" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white/90 backdrop-blur border border-vintage-200 rounded-2xl p-6 vintage-shadow flex items-center gap-4 relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 opacity-10 text-school-gold text-8xl">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="w-14 h-14 rounded-xl bg-amber-100 text-school-gold flex items-center justify-center text-2xl shrink-0">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Tổng Lượt Tài Trợ</p>
+                    <h3 id="total-sponsors" class="text-3xl font-extrabold font-serif text-vintage-900 mt-1">16</h3>
+                </div>
+            </div>
+
+            <div class="bg-white/90 backdrop-blur border border-vintage-200 rounded-2xl p-6 vintage-shadow flex items-center gap-4 relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 opacity-10 text-emerald-600 text-8xl">
+                    <i class="fa-solid fa-coins"></i>
+                </div>
+                <div class="w-14 h-14 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl shrink-0">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Tổng Tiền Mặt Tài Trợ</p>
+                    <h3 id="total-money" class="text-2xl sm:text-3xl font-extrabold font-serif text-emerald-700 mt-1">112.600.000đ</h3>
+                </div>
+            </div>
+
+            <div class="bg-white/90 backdrop-blur border border-vintage-200 rounded-2xl p-6 vintage-shadow flex items-center gap-4 relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 opacity-10 text-blue-600 text-8xl">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl shrink-0">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Vật Phẩm Quà Tặng</p>
+                    <h3 id="total-gifts" class="text-xl sm:text-2xl font-extrabold font-serif text-blue-800 mt-1">Bộ ấm chén, Ghế đá</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white/90 backdrop-blur border border-vintage-200 rounded-2xl p-6 mb-8 vintage-shadow">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                
+                <div class="relative w-full md:w-96">
+                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="searchInput" oninput="filterTable()" placeholder="Tìm theo tên tổ chức, cá nhân, đại diện..." 
+                        class="w-full pl-11 pr-4 py-3 bg-vintage-50 border border-vintage-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-school-gold text-sm transition">
+                </div>
+
+                <div class="flex flex-wrap gap-3 w-full md:w-auto items-center">
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-semibold uppercase text-gray-500">Tháng tài trợ:</label>
+                        <select id="monthFilter" onchange="filterTable()" class="bg-vintage-50 border border-vintage-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-school-gold">
+                            <option value="">Tất cả thời gian</option>
+                            <option value="6/2026">Tháng 6/2026</option>
+                            <option value="7/2026">Tháng 7/2026</option>
+                            <option value="8/2026">Tháng 8/2026</option>
+                            <option value="9/2026">Tháng 9/2026</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-semibold uppercase text-gray-500">Hình thức:</label>
+                        <select id="typeFilter" onchange="filterTable()" class="bg-vintage-50 border border-vintage-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-school-gold">
+                            <option value="">Tất cả hình thức</option>
+                            <option value="Tiền mặt">Tiền mặt</option>
+                            <option value="Chuyển vào TK trường">Chuyển khoản</option>
+                            <option value="Vật phẩm">Vật phẩm (Quà)</option>
+                        </select>
+                    </div>
+
+                    <button onclick="resetFilters()" class="text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2.5 rounded-xl transition font-medium">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Đặt lại
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white/95 backdrop-blur border border-vintage-200 rounded-2xl shadow-xl overflow-hidden">
+            <div class="px-6 py-4 bg-vintage-100 border-b border-vintage-200 flex justify-between items-center flex-wrap gap-2">
+                <h3 class="font-serif font-bold text-lg text-vintage-900 flex items-center gap-2">
+                    <i class="fa-solid fa-list-ol text-school-gold"></i> Bảng Danh Sách Chi Tiết
+                </h3>
+                <span id="resultCount" class="text-xs font-semibold bg-school-gold/20 text-vintage-900 px-3 py-1 rounded-full">
+                    Hiển thị 16/16 bản ghi
+                </span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-vintage-900 text-vintage-50 text-xs uppercase tracking-wider font-semibold">
+                            <th class="py-4 px-4 text-center w-16">TT</th>
+                            <th class="py-4 px-4 w-28">Thời Gian</th>
+                            <th class="py-4 px-4">Tên Tổ Chức / Cá Nhân</th>
+                            <th class="py-4 px-4">Thông Tin Nhà Tài Trợ</th>
+                            <th class="py-4 px-4 text-right">Tiền Tài Trợ</th>
+                            <th class="py-4 px-4">Vật Phẩm Quà</th>
+                            <th class="py-4 px-4">Ghi Chú</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sponsorTableBody" class="divide-y divide-vintage-200 text-sm">
+                        <!-- Data populated dynamically by JS -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Empty state -->
+            <div id="emptyState" class="hidden py-16 text-center">
+                <div class="text-gray-400 text-5xl mb-3"><i class="fa-solid fa-folder-open"></i></div>
+                <p class="text-gray-600 font-medium">Không tìm thấy nhà tài trợ phù hợp với từ khóa.</p>
+                <button onclick="resetFilters()" class="mt-3 text-school-gold font-semibold hover:underline text-sm">Xóa bộ lọc tìm kiếm</button>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="sponsorModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 vintage-shadow relative transform transition-all animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="mb-6">
+                <div class="inline-block bg-amber-100 text-school-gold text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+                    Hướng Tới Lễ Kỷ Niệm 60 Năm
+                </div>
+                <h2 class="font-serif text-2xl font-bold text-vintage-900">Đăng Ký Ủng Hộ & Tài Trợ</h2>
+                <p class="text-gray-600 text-sm mt-1">Thông tin của quý vị sẽ được ghi nhận vào bảng vàng tri ân của nhà trường.</p>
+            </div>
+
+            <form id="sponsorForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Tên Tổ Chức / Cá Nhân Tài Trợ <span class="text-red-500">*</span></label>
+                    <input type="text" id="inputName" required placeholder="Ví dụ: Lớp A2 khóa 2010-2013 hoặc Cá nhân Nguyễn Văn A"
+                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-school-gold text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Thông Tin Đại Diện / Niên Khóa</label>
+                        <input type="text" id="inputInfo" placeholder="Ví dụ: ĐĐ: Nguyễn Văn B (Cựu học sinh)"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-school-gold text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Thời Gian (Tháng/Năm)</label>
+                        <input type="text" id="inputMonth" value="10/2026" placeholder="Ví dụ: 10/2026"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-school-gold text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Số Tiền Tài Trợ (VNĐ)</label>
+                        <input type="text" id="inputMoney" placeholder="Ví dụ: 5.000.000đ hoặc 0đ"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-school-gold text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Vật Phẩm (Nếu có)</label>
+                        <input type="text" id="inputGift" placeholder="Ví dụ: 01 bộ ấm chén"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-school-gold text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Hình Thức & Ghi Chú <span class="text-red-500">*</span></label>
+                    <select id="inputNote" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-school-gold text-sm">
+                        <option value="Tiền mặt">Tiền mặt</option>
+                        <option value="Chuyển vào TK trường">Chuyển vào tài khoản trường</option>
+                        <option value="Tiền mặt & Vật phẩm">Tiền mặt & Vật phẩm</option>
+                        <option value="Vật phẩm tài trợ">Vật phẩm tài trợ</option>
+                    </select>
+                </div>
+
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="button" onclick="closeModal()" class="px-5 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-sm transition">
+                        Hủy bỏ
+                    </button>
+                    <button type="submit" class="px-6 py-3 rounded-xl bg-school-gold hover:bg-amber-600 text-white font-semibold text-sm shadow-lg transition">
+                        Xác Nhận Đăng Ký
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-vintage-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-school-gold/50">
+        <div id="toastIcon" class="text-school-gold text-xl"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <h4 id="toastTitle" class="font-bold text-sm">Thành công!</h4>
+            <p id="toastMessage" class="text-xs text-gray-300">Đã thêm đăng ký tài trợ vào danh sách.</p>
+        </div>
+    </div>
+
+    <footer class="bg-vintage-900 text-vintage-200 py-10 mt-12 border-t border-vintage-800">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <h2 class="font-serif text-xl font-bold text-school-gold">TRƯỜNG THPT BÁ THƯỚC - TỰ HÀO 60 NĂM XÂY DỰNG VÀ PHÁT TRIỂN</h2>
+            <p class="text-sm text-vintage-300">Trân trọng cảm ơn các thế hệ cựu học sinh, các cơ quan, tổ chức và cá nhân đã luôn đồng hành hướng về nhà trường.</p>
+            <p class="text-xs text-gray-400 pt-4 border-t border-vintage-800/60">© 2026 Ban Tổ Chức Lễ Kỷ Niệm 60 Năm THPT Bá Thước. Designed for School Project.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initial dataset matching the source image exactly (16 records)
+        let sponsorsData = [
+            {
+                id: 1,
+                month: "7/2026",
+                name: "Khóa học 2003-2006",
+                info: "ĐĐ: Dương Khắc Bảy",
+                money: "10.000.000đ",
+                gift: "01 bộ ấm chén",
+                note: "Tiền mặt"
+            },
+            {
+                id: 2,
+                month: "7/2026",
+                name: "Lớp A8 khóa -2013-2016",
+                info: "ĐĐ: Nguyễn Hồng Nhung",
+                money: "10.000.000đ",
+                gift: "02 ghế đá",
+                note: "Tiền mặt"
+            },
+            {
+                id: 3,
+                month: "8/2026",
+                name: "Ngô Thị Vàn",
+                info: "Cá nhân Khóa 1968-1971",
+                money: "10.000.000đ",
+                gift: "",
+                note: "Chuyển vào TK trường"
+            },
+            {
+                id: 4,
+                month: "8/2026",
+                name: "Nguyễn Thị Lương",
+                info: "Cá nhân Khóa 1968-1971",
+                money: "10.000.000đ",
+                gift: "",
+                note: "Chuyển vào TK trường"
+            },
+            {
+                id: 5,
+                month: "8/2026",
+                name: "Lớp A1 khóa -2007-2010",
+                info: "ĐĐ: Trương Công Điệp",
+                money: "10.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 6,
+                month: "6/2026",
+                name: "Lớp A1 khóa -2018-2021",
+                info: "ĐĐ: Bùi Phương Thảo",
+                money: "4.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 7,
+                month: "8/2026",
+                name: "Lớp A1 khóa -2016-2019",
+                info: "ĐĐ: Ng Thị Phương Thảo",
+                money: "3.600.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 8,
+                month: "8/2026",
+                name: "Lớp A3 khóa -2010-2013",
+                info: "ĐĐ: Nguyễn Thị Mỹ",
+                money: "4.000.000đ",
+                gift: "",
+                note: "Chuyển vào TK trường"
+            },
+            {
+                id: 9,
+                month: "8/2026",
+                name: "Em: Nguyễn Thị Thương",
+                info: "Cựu học sinh lớp A1 (Niên khóa: 2004-2007)",
+                money: "5.000.000đ",
+                gift: "",
+                note: "Chuyển vào TK trường"
+            },
+            {
+                id: 10,
+                month: "8/2026",
+                name: "Em: Nguyễn Thùy Dung",
+                info: "Cựu học sinh lớp A 2004-2007",
+                money: "3.000.000đ",
+                gift: "",
+                note: "Chuyển vào TK trường"
+            },
+            {
+                id: 11,
+                month: "9/2026",
+                name: "Lớp A1 khóa -2010-2013",
+                info: "ĐĐ: Lễ Duy Lọc",
+                money: "13.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 12,
+                month: "9/2026",
+                name: "Lớp A1 khóa -2016-2019",
+                info: "ĐĐ: Nguyễn Thị Phương Thảo",
+                money: "5.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 13,
+                month: "9/2026",
+                name: "Lớp A1 khóa -2017-2020",
+                info: "ĐĐ: Đào Trung Kiển",
+                money: "6.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 14,
+                month: "9/2026",
+                name: "Lớp A5 khóa -2010-2013",
+                info: "ĐĐ: Trương Vấn Qủy",
+                money: "7.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 15,
+                month: "9/2026",
+                name: "Em: Nguyễn Xuân Quyền",
+                info: "Cựu học sinh lớp A5 (Niên khóa: 2003-2007)",
+                money: "2.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            },
+            {
+                id: 16,
+                month: "9/2026",
+                name: "Lớp A1 khóa -2013-2016",
+                info: "ĐĐ: Lề Huy Thu",
+                money: "10.000.000đ",
+                gift: "",
+                note: "Tiền mặt"
+            }
+        ];
+
+        // Load saved custom entries from localStorage if available
+        function loadSavedData() {
+            const saved = localStorage.getItem('thpt_bathuoc_sponsors');
+            if (saved) {
+                try {
+                    sponsorsData = JSON.parse(saved);
+                } catch (e) {
+                    console.error("Error loading local storage", e);
+                }
+            }
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('thpt_bathuoc_sponsors', JSON.stringify(sponsorsData));
+        }
+
+        // Render Table & Stats
+        function renderTable(dataToRender) {
+            const tbody = document.getElementById('sponsorTableBody');
+            const emptyState = document.getElementById('emptyState');
+            const resultCount = document.getElementById('resultCount');
+            
+            tbody.innerHTML = '';
+            resultCount.innerText = `Hiển thị ${dataToRender.length}/${sponsorsData.length} bản ghi`;
+
+            if (dataToRender.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            dataToRender.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-amber-50/50 transition duration-150";
+                
+                // Highlight badge for note type
+                let noteBadge = item.note;
+                if (item.note.includes('Tiền mặt')) {
+                    noteBadge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800"><i class="fa-solid fa-money-bill text-emerald-600"></i> ${item.note}</span>`;
+                } else if (item.note.includes('Chuyển')) {
+                    noteBadge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"><i class="fa-solid fa-building-columns text-blue-600"></i> ${item.note}</span>`;
+                }
+
+                // Format money with bold gold style
+                const moneyDisplay = item.money ? `<span class="font-semibold text-amber-700">${item.money}</span>` : `<span class="text-gray-400">-</span>`;
+                const giftDisplay = item.gift ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800"><i class="fa-solid fa-gift text-purple-600"></i> ${item.gift}</span>` : `<span class="text-gray-400">-</span>`;
+
+                tr.innerHTML = `
+                    <td class="py-4 px-4 text-center font-medium text-gray-500">${index + 1}</td>
+                    <td class="py-4 px-4 font-medium text-vintage-900">${item.month}</td>
+                    <td class="py-4 px-4 font-bold text-vintage-900">${item.name}</td>
+                    <td class="py-4 px-4 text-gray-600 text-xs sm:text-sm">${item.info || '-'}</td>
+                    <td class="py-4 px-4 text-right">${moneyDisplay}</td>
+                    <td class="py-4 px-4">${giftDisplay}</td>
+                    <td class="py-4 px-4">${noteBadge}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            updateStatistics(dataToRender);
+        }
+
+        // Update Summary Cards
+        function updateStatistics(currentData) {
+            document.getElementById('total-sponsors').innerText = currentData.length;
+            
+            // Calculate total money
+            let sum = 0;
+            currentData.forEach(item => {
+                if (item.money) {
+                    // Extract numbers from string like "10.000.000đ"
+                    const numStr = item.money.replace(/\./g, '').replace('đ', '').trim();
+                    const num = parseInt(numStr, 10);
+                    if (!isNaN(num)) {
+                        sum += num;
+                    }
+                }
+            });
+
+            // Format formatted VND string
+            const formattedSum = sum.toLocaleString('vi-VN') + 'đ';
+            document.getElementById('total-money').innerText = formattedSum;
+        }
+
+        // Filter Logic
+        function filterTable() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const monthVal = document.getElementById('monthFilter').value;
+            const typeVal = document.getElementById('typeFilter').value;
+
+            const filtered = sponsorsData.filter(item => {
+                const matchQuery = item.name.toLowerCase().includes(query) || 
+                                   item.info.toLowerCase().includes(query) || 
+                                   item.gift.toLowerCase().includes(query);
+                
+                const matchMonth = monthVal === "" || item.month === monthVal;
+                const matchType = typeVal === "" || item.note.toLowerCase().includes(typeVal.toLowerCase());
+
+                return matchQuery && matchMonth && matchType;
+            });
+
+            renderTable(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('monthFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            renderTable(sponsorsData);
+        }
+
+        // Modal Controls
+        function openModal() {
+            document.getElementById('sponsorModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('sponsorModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            document.getElementById('sponsorForm').reset();
+        }
+
+        // Handle Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('inputName').value.trim();
+            const info = document.getElementById('inputInfo').value.trim();
+            const month = document.getElementById('inputMonth').value.trim();
+            let money = document.getElementById('inputMoney').value.trim();
+            const gift = document.getElementById('inputGift').value.trim();
+            const note = document.getElementById('inputNote').value;
+
+            if (money && !money.includes('đ')) {
+                money += 'đ';
+            }
+
+            const newItem = {
+                id: sponsorsData.length + 1,
+                month: month || '10/2026',
+                name: name,
+                info: info,
+                money: money || '0đ',
+                gift: gift,
+                note: note
+            };
+
+            sponsorsData.unshift(newItem); // Add to beginning
+            saveToLocalStorage();
+            renderTable(sponsorsData);
+            closeModal();
+            showToast("Đăng ký thành công!", `Đã thêm tài trợ của "${name}" vào danh sách.`);
+        }
+
+        // Toast Notification
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMessage').innerText = message;
+            
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            loadSavedData();
+            renderTable(sponsorsData);
+        }
+    </script>
+</body>
+</html>
